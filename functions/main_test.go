@@ -20,7 +20,7 @@ func init() {
 func TestGetNextNSchedules_BasicUsage(t *testing.T) {
 	u, _ := url.Parse("/next-schedules")
 	q := u.Query()
-	q.Set("expression", "0/5 23-11 * * ? *")
+	q.Set("expression", "0/5 23,0-11 * * ? *")
 	q.Set("timezoneOffset", "+09:00")
 	q.Set("limit", "5")
 	u.RawQuery = q.Encode()
@@ -35,13 +35,8 @@ func TestGetNextNSchedules_BasicUsage(t *testing.T) {
 	var res getNextNSchedulesResponse
 	json.Unmarshal(body, &res)
 
-	t.Log(res.Expression)
-	t.Log(res.Limit)
-	t.Log(res.NextSchedules)
-	t.Log(res.TimezoneOffset)
-
 	assert.Equal(t, 200, w.Code)
-	assert.Equal(t, "0/5 23-11 * * ? *", res.Expression)
+	assert.Equal(t, "0/5 23,0-11 * * ? *", res.Expression)
 	assert.Equal(t, len(res.NextSchedules), res.Limit)
 	assert.Equal(t, "+09:00", res.TimezoneOffset)
 }

@@ -19,7 +19,7 @@ curl -G --data-urlencode 'expression=0/5 * * * ? *' \
 # Example Response
 {
     "expression": "0/5 * * * ? *",
-    "limit": 10,
+    "limit": 50,
     "nextSchedules": [
         "2020-11-25 02:40:00",
         "2020-11-25 02:45:00",
@@ -32,7 +32,7 @@ curl -G --data-urlencode 'expression=0/5 * * * ? *' \
         "2020-11-25 03:20:00",
         "2020-11-25 03:25:00"
     ],
-    "timezoneOffset": "+00:00"
+    "timezoneOffset": "+09:00"
 }
 ```
 
